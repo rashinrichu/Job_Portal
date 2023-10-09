@@ -1,0 +1,115 @@
+{% extends 'navbar3.html' %}
+{% block content %}
+<div class="chatbox container">
+    <h1>Messages for Job Listing: {{ job_listing.title }}</h1>
+  
+    {% for message in messages %}
+      <div class="message">
+        {% if forloop.first %}
+          <div class="message-header">
+            <p>From: {{ message.sender.username }}</p>
+            <p>To: {{ message.recipient.username }}</p>
+          </div>
+        {% endif %}
+        <div class="message-body">
+          <p>Subject: {{ message.subject }}</p>
+          <p>{{ message.body }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <p>No messages found.</p>
+    {% endfor %}
+  
+    <div class="reply-form">
+      <form method="POST" action="{% url 'employee_chat' job_listing_id=job_listing.id %}">
+        {% csrf_token %}
+        <textarea name="message" rows="4" cols="50" placeholder="Type your reply message here"></textarea>
+        <button type="submit">Reply</button>
+      </form>
+    </div>
+  </div>
+  
+
+
+  <style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+      }
+      
+      .chatbox {
+        width: 400px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .chatbox h1 {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin: 0;
+      }
+      
+      .message {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+      }
+      
+      .message.sent {
+        align-items: flex-end;
+      }
+      
+      .message.received {
+        align-items: flex-start;
+      }
+      
+      .message-header {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .message-body {
+        margin: 0;
+      }
+      
+      .reply-form {
+        padding: 10px;
+        background-color: #f0f0f0;
+      }
+      
+      .reply-form textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+      
+      .reply-form button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      
+      .reply-form button:hover {
+        background-color: #45a049;
+      }
+      
+      .swipe-up {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #f0f0f0;
+        padding: 10px 0;
+        cursor: pointer;
+      }
+            
+  </style>
+  {% endblock %}

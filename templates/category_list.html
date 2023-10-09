@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  {% extends 'admin_home.html' %}
+
+  {% block content %}
+  
+<h2 class="text-center">Categories</h2>
+  <div class="row">
+    {% for cat in categories %}
+      <div class="box">
+        <p class="box-content">{{ cat.name }}</p>
+        <span class="tooltip">{{ cat.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+
+  {% endblock %}
+  
+  

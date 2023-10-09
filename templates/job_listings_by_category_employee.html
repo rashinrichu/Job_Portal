@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% extends 'navbar4.html' %}
+
+
+
+{% block content %}
+
+<h1>Job Listings for {{ category.name }}</h1>
+
+<style>
+    .card-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+  
+    .card {
+      flex: 0 0 calc(50% - 20px);
+      max-width: 300px;
+      background-color: #f2f2f2;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  
+    @media (max-width: 767px) {
+        .card {
+            flex: 0 0 calc(100% - 20px);
+        }
+        .card p:last-child {
+            font-size: 14px; /* Adjust the font size as per your preference */
+        }
+    }
+ 
+  </style>
+  
+  <div class="card-row">
+    {% for job_listing in job_listings %}
+      <div class="card">
+        <h3 class="">{{ job_listing.title }}</h3>
+        <h4>Category: {{ job_listing.category }}</h4>
+        <p>Description: {{ job_listing.description }}</p>
+        <p>Requirements: {{ job_listing.requirements }}</p>
+        <p>Location: {{ job_listing.location }}</p>
+        <p>Salary: {{ job_listing.salary }}</p>
+        <p>Keyword: {{ job_listing.get_keyword_display }}</p>
+        <p>Vacancies: {{ job_listing.vacancies }}</p>
+        <p>Date Added: {{ job_listing.date_added }}</p>
+        <p>Expiry Date: {{ job_listing.expiry_date }}</p>
+        <div class="text-center" style="font-size: 20px;">
+            <button type="button" class="btn btn" style="background-color:black;color:white;" data-bs-toggle="modal" data-bs-target="#applyJobModal{{ job_listing.id }}">
+                Apply
+              </button>        </div>
+      </div>
+    {% empty %}
+      <p style="font-size: 40px;">No jobs available for this category.</p>
+    {% endfor %}
+  </div>
+  <button onclick="history.back()" style="background-color: black;color:white;;">Go Back</button>
+
+
+  {% for job_listing in job_listings %}
+  <div class="modal fade" id="applyJobModal{{ job_listing.id }}" tabindex="-1" aria-labelledby="applyJobModalLabel{{ job_listing.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applyJobModalLabel{{ job_listing.id }}">Apply for Job: {{ job_listing.title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Job application form -->
+          <form method="POST" action="{% url 'apply_job' job_listing.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="cover-letter" class="form-label">Cover Letter</label>
+              <textarea class="form-control" id="cover-letter" name="cover_letter" rows="5"></textarea>
+            </div>
+            <!-- Resume field -->
+            <div class="mb-3">
+              <label for="resume" class="form-label">Resume</label>
+              <input type="file" class="form-control" id="resume" name="resume">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer class="footer" style="background-color: black;"> 
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+<div class="left-content text-center">
+  <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+    Email</p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+  <br>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+    <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+  </div>
+  <div class="center-content text-center">
+    <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+    <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+  </div>
+<div class="right-content text-center">
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+  <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+  <br>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+</div>
+</div>
+</footer>
+{% endblock %}

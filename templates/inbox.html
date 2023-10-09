@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Inbox</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Subject</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.sender }}</td>
+            <td>{{ message.subject }}</td>
+            <td>{{ message.date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>

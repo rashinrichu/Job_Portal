@@ -1,0 +1,32 @@
+{% extends 'navbar_2.html' %}
+{% block content %}
+  <form method="post">
+  </form>
+
+
+
+
+
+
+
+
+  {% if messages %}
+    <script>
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+          var successMsg = '{{ message|safe }}';
+        {% endif %}
+        {% if message.tags == 'error' %}
+          var errorMsg = '{{ message|safe }}';
+        {% endif %}
+      {% endfor %}
+
+      if (successMsg) {
+        alert(successMsg);
+      }
+      if (errorMsg) {
+        alert(errorMsg);
+      }
+    </script>
+  {% endif %}
+{% endblock %}

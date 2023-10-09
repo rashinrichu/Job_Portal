@@ -1,0 +1,176 @@
+{% extends 'navbar4.html' %}
+{% block content %}
+<!-- Include the Bootstrap JavaScript files -->
+<br>
+<br>
+<div class="container" style="border:4px solid black; box-shadow: 0 6px 6px rgba(0, 0, 0, 0.9); width:97%;background-color:white;">
+ 
+    <h1 class="text-center">All Employers List</h1>
+ 
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+              
+                <tr>
+                    <div class="mb-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search employers">
+                    </div>
+                    <th>Employer ID</th>
+                    <th>Contact Name</th>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Company Description</th>
+                    <th>Website</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                {% for employer in employers %}
+                <tr>
+                    <td>{{ employer.id }}</td>
+                    <td>{{ employer.user.username }}</td>
+                    <td>{{ employer.company_name }}</td>
+                    <td>{{ employer.user.email }}</td>
+                    <td>{{ employer.phone_number }}</td>
+                    <td>{{ employer.address }}</td>
+                    <td>{{ employer.city }}</td>
+                    <td>{{ employer.state }}</td>
+                    <td>{{ employer.zip_code }}</td>
+                    <td>{{ employer.company_description }}</td>
+                    <td>{{ employer.website }}</td>
+                    <td class="d-grid">
+                        <a href="{% url 'employer_job_listings' employer_id=employer.id %}" class="btn btn-" style="background-color: black;color:white;">View Jobs</a>
+                        <br>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMessagesModal{{ employer.id }}" style="background-color: black;color:white;">Chat</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+  {% for employer in employers %}
+
+  
+  <!-- View Messages Modal -->
+  <div class="modal fade" id="viewMessagesModal{{ employer.id }}" tabindex="-1" role="dialog" aria-labelledby="viewMessagesModal{{ employer.id }}Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content" style="height: 400px;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewMessagesModal{{ employer.id }}Label">View Messages for {{ employer.user.username }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+          <h4>Sent Messages:</h4>
+          <ul class="messages">
+            {% for message in employer.sent_messages %}
+            <li class="sent">{{ message.message }}</li>
+            {% endfor %}
+          </ul>
+          <h4>Received Messages:</h4>
+          <ul class="messages">
+            {% for message in employer.received_messages %}
+            <li class="received">{{ message.message }}</li>
+            {% endfor %}
+          </ul>
+          <h4>Reply to Messages:</h4>
+          <form action="{% url 'chat_between_users' sender_id=request.user.id recipient_id=employer.user.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="recipient_id" value="{{ employer.id }}">
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="3" placeholder="Enter your reply" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Reply</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <br>
+  <footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Get all table rows from the employer list
+    const tableRows = document.querySelectorAll('.table tbody tr');
+
+    // Add an event listener to the search input field
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Loop through each row in the table
+        tableRows.forEach(row => {
+            // Get the contact name from the table row
+            const contactName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+            // Check if the contact name contains the search query
+            if (contactName.includes(searchQuery)) {
+                // If the contact name matches the search query, display the row
+                row.style.display = 'table-row';
+            } else {
+                // If the contact name does not match the search query, hide the row
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+  {% if messages %}
+<script>
+  {% for message in messages %}
+    {% if message.tags == 'success' and message.message == 'Message sent successfully.' %}
+      var alertMsg = '{{ message|safe }}';
+    {% endif %}
+  {% endfor %}
+
+  if (typeof alertMsg !== 'undefined') {
+    alert(alertMsg);
+  }
+</script>
+{% endif %}
+
+
+
+    {% endblock %}

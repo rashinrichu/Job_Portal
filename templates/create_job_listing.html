@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+  {% extends 'navbar3.html' %}
+  {% load static %}
+  
+  {% block content %}
+  
+  <style>
+    @media (max-width: 767px) {
+        .form-box {
+          width: 80%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+  </style>
+  <br><br>
+  <div class="form-box container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 4px solid black; background-color: white;max-width: 500px;">
+    <h2 class="text-center">Add Jobs</h2>
+    <form method="post" action="{% url 'create_job_listing' %}">
+      {% csrf_token %}
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
+      </div>
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" name="category" required>
+          <option value="">Select category</option>
+          {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Enter description" required></textarea>
+      </div>
+      <!-- Requirements -->
+      <div class="form-group">
+        <label for="requirements">Requirements:</label>
+        <textarea class="form-control" id="requirements" name="requirements" placeholder="Enter requirements" required></textarea>
+      </div>
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
+      </div>
+      <!-- Salary -->
+      <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="number" class="form-control" id="salary" name="salary" placeholder="Enter salary" required>
+      </div>
+      <!-- Keyword -->
+      <div class="form-group">
+        <label for="keyword">Keyword:</label>
+        <select class="form-control" id="keyword" name="keyword" required>
+          <option value="">Select keyword</option>
+          {% for choice in keyword_choices %}
+            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- Vacancies -->
+      <div class="form-group">
+        <label for="vacancies">Vacancies:</label>
+        <input type="number" class="form-control" id="vacancies" name="vacancies" placeholder="Enter vacancies" required>
+      </div>
+      <!-- Expiry Date -->
+      <div class="form-group">
+        <label for="expiry_date">Expiry Date:</label>
+        <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+      </div>
+      <br>
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary mx-auto" style="background-color: black; color: white; display: block;">Create Job</button>
+    </form>
+  </div>
+  
+  
+<br>
+<br>
+
+<footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  {% endblock %}

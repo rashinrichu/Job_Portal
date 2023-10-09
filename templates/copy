@@ -1,0 +1,117 @@
+<!-- Employee Registration Modal -->
+<div id="employeeRegistrationModal" class="modal">
+     <div class="modal-content">
+     <span class="close" onclick="closeEmployeeRegistrationModal()">&times;</span>
+     <h2>Employee Registration</h2>
+     <div class="form-group">
+       <label for="firstName">First Name:</label>
+       <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter first name" required pattern="[A-Z][a-z\s]*">
+       <div class="invalid-feedback">"Please enter a valid first name starting with a capital letter.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="lastName">Last Name:</label>
+       <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Enter last name" required>
+       <div class="invalid-feedback">Please enter your last name.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="username">Username:</label>
+       <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required pattern="[A-Z][a-z\s]*">
+       <div class="invalid-feedback">Please enter a username.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="email">Email:</label>
+       <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+       <div class="invalid-feedback">Please enter a valid email address.</div>
+     </div>
+        
+
+     
+             <div class="form-group">
+               <label for="dateOfBirth">Date of Birth:</label>
+               <input type="date" class="form-control" name="date_of_birth" required>
+             </div>
+             <div class="form-group">
+               <label for="password">Password:</label>
+               <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required minlength="5">
+               <div class="invalid-feedback">Please enter a password with at least 5 characters, containing uppercase letters, lowercase letters, and numbers.</div>
+           </div>
+           
+           <div class="form-group">
+               <label for="confirmPassword">Confirm Password:</label>
+               <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Confirm password" required minlength="5">
+               <div class="invalid-feedback">Please confirm your password.</div>
+           </div>
+             <button type="submit" class="btn btn" style="background-color:black;color:white;">Register</button>
+
+<a class="nav-link" href="#" id="employerRegistrationLink" style="color:black;font-weight:bold;">Register as Employer</a>
+
+   </div>
+
+ </div>
+
+
+
+ <!-- Employer Registration Modal -->
+ <div id="employerRegistrationModal" class="modal">
+       <div class="modal-content">
+     <span class="close" onclick="closeEmployerRegistrationModal()">&times;</span>
+     <h2>Employer Registration</h2>
+     <div class="form-group">
+       <label for="firstName">First Name:</label>
+       <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter first name" required pattern="[A-Z][a-z\s]*">
+       <div class="invalid-feedback">"Please enter a valid first name starting with a capital letter.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="lastName">Last Name:</label>
+       <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Enter last name" required>
+       <div class="invalid-feedback">Please enter your last name.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="username">Username:</label>
+       <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required pattern="[A-Z][a-z\s]*">
+       <div class="invalid-feedback">Please enter a username.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="email">Email:</label>
+       <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+       <div class="invalid-feedback">Please enter a valid email address.</div>
+     </div>
+        
+
+     
+             <div class="form-group">
+               <label for="dateOfBirth">Date of Birth:</label>
+               <input type="date" class="form-control" name="date_of_birth" required>
+             </div>
+             <button type="submit" class="btn btn" style="background-color:black;color:white;">Register</button>
+
+</div>
+
+ </div>
+
+ <!-- Login Modal -->
+ <div id="loginModal" class="modal">
+   <div class="modal-content">
+     <span class="close" onclick="closeLoginModal()">&times;</span>
+     <h2>Login</h2>
+     <div class="form-group">
+       <label for="username">Username:</label>
+       <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required pattern="[A-Z][a-z\s]*">
+       <div class="invalid-feedback">Please enter a username.</div>
+     </div>
+
+     <div class="form-group">
+       <label for="email">Email:</label>
+       <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+       <div class="invalid-feedback">Please enter a valid email address.</div>
+     </div>
+ 
+     <button type="submit" style="background-color: black;color:white;">Log in</button>
+</div>
+ </div>  

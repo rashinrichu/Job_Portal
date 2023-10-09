@@ -1,0 +1,553 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <style>
+
+
+      
+      
+
+            
+    .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f3f3f3;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: transform 0.3s ease-in-out; /* Adjusted the transition */
+        transform: translateX(-250px); /* Hide the sidebar by default */
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 9999;
+        max-height: 100vh;
+        transform: translateX(-100%); /* Change the translateX value to -100% */
+        visibility: hidden; /
+      }
+  
+    
+  
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color:gray;
+        transition: 0.3s;
+      }
+  
+      .sidebar a:hover {
+        color: hsl(279, 36%, 46%);
+        text-decoration: none;
+      }
+  
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+  
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+  
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #f3f3f3;
+        color: black;
+        padding: 10px 15px;
+        border: none;
+      }
+  
+      .openbtn:hover {
+        background-color: #bbb;
+      }
+  
+      #main {
+        transition: margin-left 0.5s;
+        padding: 20px;
+      }
+  
+      /* The dropdown container */
+   
+      .sidebar.open {
+        transform: translateX(0);
+        visibility: visible; /* Add this line to make the sidebar visible when open */
+      }
+
+    .logo-animation {
+        width: 50px;
+        height: 50px;
+        background-image: url(https://cdn.dribbble.com/users/500242/screenshots/3672858/bh-advisor-dribbble.gif);
+        background-size: cover;
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      .nav-logo {
+        font-size: 30px;
+        color: darkslategray;
+        position: relative;
+        animation: shake 0.5s ease-in-out infinite;
+        font-weight: bold;
+      }
+      
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+  
+      
+
+
+  
+
+ 
+  
+  /* footer*/
+  /* Common styles for both desktop and mobile */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-content p {
+    font-size: 25px;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  /* Styles for mobile */
+    /* Add a media query for screens with a maximum width of 767px (mobile devices) */
+    @media (max-width: 767px) {
+      /* Adjust the flex layout to stack the content vertically */
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    
+      /* Reduce the font size for mobile view */
+      .footer-content p {
+        font-size: 10px;
+      }
+    
+      /* Override the flex-wrap property to ensure the right side content is visible */
+      .right-content {
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+    }
+
+    
+ 
+    
+ 
+    body{
+        background-image: url('https://www.employmenthelp.org/wp-content/uploads/Job-Board-Header-Background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+      }
+      @media (max-width: 767px) {
+        .navbar .container::before,
+        .navbar .container::after {
+          display: none; /* Hide the background lines in mobile view */
+        }
+      }
+
+          
+    
+    
+             
+    
+        
+     
+     
+     
+          
+     /* CSS for mobile view */
+     @media (max-width: 767px) {
+        .table-responsive {
+          overflow-x: auto;
+          margin-bottom: 160px; 
+        }
+        
+        .table {
+          width: 100%;
+          white-space: nowrap;
+          max-height: 300px; /* Adjust the max-height value as needed */
+          overflow-y: scroll;
+        }
+      }
+      
+      .messages {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .messages li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      
+      .messages .sent {
+        background-color: #DCF8C6;
+        align-self: flex-end;
+      }
+      
+      .messages .received {
+        background-color: #E8E8E8;
+        align-self: flex-start;
+      }
+      .sent {
+        background-color: #eaf6ff;
+      }
+      
+      .received {
+        background-color: #f5f5f5;
+      } 
+  
+           
+</style>
+
+<div id="mySidebar" class="sidebar">
+          
+          
+    <a class="navbar-brand" href="#">
+        <div class="logo-animation"></div>
+        
+      </a>
+      <span class="nav-logo" href="#">Job Connect</span>
+
+           <a href="/logout/"> <img src="https://th.bing.com/th/id/OIP.Kb13Ps1nwSYI5LrhQwEhAwHaHa?pid=ImgDet&w=500&h=500&rs=1" height="50px" width="50px">LogOut</a>
+ 
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/admin_home/">Home</a>
+    <a href="/add_category/">
+      Add category</a>
+      <a href="/category_list/">
+        category List</a>
+
+                
+
+         
+
+                
+     
+
+
+      <a href="/employee_list/">
+        Employees</a>
+   
+
+      
+  
+      
+                
+
+      <a href="/employer_list/">
+            Employers</a>
+            <a href="/notification/">
+                Chat</a>
+
+
+            
+           
+
+                
+  
+    </div>
+  </div>
+  
+  
+  
+  <div id="main">
+    <button class="openbtn" onclick="openNav()" style="background-color:black;color:white;">&#9776;Job Connect</button>
+  
+  </div>
+
+<div class="container" style="border:4px solid black; box-shadow: 0 6px 6px rgba(0, 0, 0, 0.9); width:90%;background-color:white;">
+    <h1 class="text-center">Employee List</h1>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by name" id="searchInput">
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Details</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.user.username }}</td>
+                    <td>{{ employee.user.email }}</td>
+                    <td>
+                        <button class="btn btn-" data-bs-toggle="modal" data-bs-target="#employeeModal{{ employee.id }}" style="background-color: black;color:white;">Details</button>
+                        <button type="button" class="btn btn-"style="background-color: black;color:white;" data-bs-toggle="modal" data-bs-target="#chatModal{{ employee.user.id }}">
+                            Chat
+                        </button>
+                     
+                                        </td>
+                    <td>
+                    <form action="" method="POST" onsubmit="return confirm('Are you sure you want to delete this employer?')">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% for employee in employees %}
+<div class="modal fade" id="employeeModal{{ employee.id }}" tabindex="-1" role="dialog" aria-labelledby="employeeModal{{ employee.id }}Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="employeeModal{{ employee.id }}Label">Employee Details - {{ employee.user.username }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> {{ employee.user.username }}</p>
+                <p><strong>Address:</strong> {{ employee.address }}</p>
+                <p><strong>City:</strong> {{ employee.city }}</p>
+                <p><strong>State:</strong> {{ employee.state }}</p>
+                <p><strong>Zip Code:</strong> {{ employee.zip_code }}</p>
+                <p><strong>Education Level:</strong> {{ employee.education_level }}</p>
+                <p><strong>Skills:</strong> {{ employee.skills }}</p>
+                <p><strong>Experience:</strong> {{ employee.experience }}</p>
+                <p><strong>Date of Birth:</strong> {{ employee.date_of_birth }}</p>
+                <p><strong>Gender:</strong> {{ employee.gender }}</p>
+                <a href="{{ employee.resume.url }}" class="btn btn-primary">Download Resume</a>
+                <br>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+                                <!-- Admin sent message to employee -->
+
+
+{% for employee in employees %}
+    <div class="modal fade" id="chatModal{{ employee.user.id }}" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel{{ employee.user.id }}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatModalLabel{{ employee.user.id }}">Chat with {{ employee.user.username }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                  <h6>Chat Messages:</h6>
+                  <ul>
+                      {% for message in employee.chat_messages %}
+                          {% if message.admin %}
+                              <li class="message received admin-message">Admin: {{ message.message }}</li>
+                          {% else %}
+                              <li class="message received">{{ message.sender.username }}: {{ message.message }}</li>
+                          {% endif %}
+                      {% endfor %}
+                      
+                      <!-- Show messages sent by employees to the admin -->
+                      {% for message in employee.employee_sent_messages %}
+                          <li class="message sent">{{ employee.name }}: {{ message.message }}</li>
+                      {% endfor %}
+                  </ul>
+              </div>
+              
+                
+                
+                
+                <div class="modal-footer">
+                    <form method="POST" action="{% url 'private_chat' recipient_id=employee.user.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="message" placeholder="Type your message" required>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").classList.add("open");
+    }
+  
+    function closeNav() {
+      document.getElementById("mySidebar").classList.remove("open");
+    }
+      // Retrieve the keyword input field
+</script>  
+
+<script>
+    // Function to handle the search
+    function searchTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toUpperCase();
+        const table = document.querySelector(".table");
+        const rows = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those that do not match the search query
+        for (let i = 0; i < rows.length; i++) {
+            const nameCell = rows[i].getElementsByTagName("td")[1];
+            if (nameCell) {
+                const nameText = nameCell.textContent || nameCell.innerText;
+                if (nameText.toUpperCase().indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    // Event listener for search input
+    document.getElementById("searchInput").addEventListener("keyup", searchTable);
+</script>
+
+  
+
+{% if messages %}
+<script>
+  {% for message in messages %}
+    {% if message.tags == 'success' and message.message == 'Message Sent Successfully' %}
+      var alertMsg = '{{ message|safe }}';
+    {% endif %}
+  {% endfor %}
+
+  if (typeof alertMsg !== 'undefined') {
+    alert(alertMsg);
+  }
+</script>
+{% endif %}
+

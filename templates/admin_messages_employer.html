@@ -1,0 +1,107 @@
+{% extends 'navbar3.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<br>
+<br>
+<div class="container bg-white p-3" style="max-width: 600px; height: 570px;border:3px solid black;">
+    <h2 class="text-center">Admin Messages</h2>
+    <div class="chat-messages" style="max-height: 300px; overflow-y: scroll; scrollbar-width: thin;">
+        {% for message in admin_messages %}
+            {% if message.sender.is_superuser %}
+                <div class="message received">Admin: {{ message.message }}</div>
+            {% else %}
+                <div class="message sent">You: {{ message.message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control border-custom" name="message" rows="3" placeholder="Enter your reply" required></textarea>
+        </div>
+        
+        <br>
+        <button type="submit" class="btn btn- text-center" style="background-color: black;color:white;">Send Reply</button>
+
+    </form>
+</div>
+
+<br>
+<br>
+<footer class="footer" style="background-color: black;"> 
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+<div class="left-content text-center">
+  <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+    Email</p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+  <br>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+  <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+    <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+  </div>
+  <div class="center-content text-center">
+    <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+    <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+  </div>
+<div class="right-content text-center">
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+  <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+  <br>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+  <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+</div>
+</div>
+</footer>
+
+
+<script>
+    function scrollBox(direction) {
+        const messageBox = document.querySelector('.message-box');
+        const scrollAmount = 50;
+        if (direction === 'up') {
+            messageBox.scrollTop -= scrollAmount;
+        } else if (direction === 'down') {
+            messageBox.scrollTop += scrollAmount;
+        }
+    }
+</script>
+
+<style>
+    .messages {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .messages li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      
+      .messages .sent {
+        background-color: #DCF8C6;
+        align-self: flex-end;
+      }
+      
+      .messages .received {
+        background-color: #E8E8E8;
+        align-self: flex-start;
+      }
+      .sent {
+        background-color: #eaf6ff;
+      }
+      
+      .received {
+        background-color: #f5f5f5;
+      } 
+</style>
+{% endblock %}

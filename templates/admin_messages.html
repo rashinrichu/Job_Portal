@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+  <style>
+
+
+      
+      
+
+            
+    .navbar {
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+    }
+    .navbar-brand img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .nav-item {
+        font-size: 30px;
+        padding: 5px 10px;
+      }
+      
+      .nav-item:hover {
+        color: mediumseagreen;
+      }
+      
+    .logo-animation {
+        width: 50px;
+        height: 50px;
+        background-image: url(https://cdn.dribbble.com/users/500242/screenshots/3672858/bh-advisor-dribbble.gif);
+        background-size: cover;
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      .nav-logo {
+        font-size: 40px;
+        color: darkslategray;
+        position: relative;
+        animation: shake 0.5s ease-in-out infinite;
+        font-weight: bold;
+      }
+      
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+  
+      
+
+      /* CSS Styling */
+ 
+  
+  /* footer*/
+  /* Common styles for both desktop and mobile */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-content p {
+    font-size: 25px;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  /* Styles for mobile */
+    /* Add a media query for screens with a maximum width of 767px (mobile devices) */
+    @media (max-width: 767px) {
+      /* Adjust the flex layout to stack the content vertically */
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    
+      /* Reduce the font size for mobile view */
+      .footer-content p {
+        font-size: 10px;
+      }
+    
+      /* Override the flex-wrap property to ensure the right side content is visible */
+      .right-content {
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+    }
+ 
+    body {
+        background-image: url('https://www.employmenthelp.org/wp-content/uploads/Job-Board-Header-Background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .messages {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .messages li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    
+    .messages .sent {
+        background-color: #DCF8C6;
+        align-self: flex-end;
+    }
+    
+    .messages .received {
+        background-color: #E8E8E8;
+        align-self: flex-start;
+    }
+    .sent {
+        background-color: #eaf6ff;
+    }
+
+    .received {
+        background-color: #f5f5f5;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo-animation"></div>
+                
+              </a>
+              <span class="nav-logo" href="#">Job Connect</span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/employee_home/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employee_profile/">Profile</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_messages/">Chat</a>
+              
+       
+            </li>
+              
+            
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="" id="">Jobs</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Jobs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
+                  <li><a class="dropdown-item" href="/created_jobs_employee/">All Job</a></li>
+                  <!-- Add more dropdown menu items for jobs if needed -->
+                  <li><a class="dropdown-item" href="/all_employers_list/">Employers</a></li>
+                  <li><a class="dropdown-item" href="/applied_jobs_employee/">Applied jobs</a></li>
+                  <li><a class="dropdown-item" href="/employee_chat/">Notifications</a></li>
+    
+                </ul>
+              </li>
+            
+              
+    
+        
+           
+    
+              <li class="nav-item">
+                <a class="nav-link" href="/logout/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<br>
+<br>
+
+                                <!-- employee sent message to admin-->
+
+               <!-- admin_messages.html -->
+<!-- admin_messages.html -->
+<div class="container bg-white p-3" style="max-width: 600px; height: 570px; border: 3px solid black;">
+    <h2>Admin Messages</h2>
+    <div class="chat-messages" style="max-height: 300px; overflow-y: scroll; scrollbar-width: thin;">
+        {% for message in admin_messages %}
+            {% if message.admin %}
+                <div class="message received">{{ message.sender.username }} (Admin): {{ message.message }}</div>
+            {% else %}
+                <div class="message sent">You: {{ message.message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <br>
+    <form method="post" action="{% url 'private_chat' recipient_id=recipient.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control border-custom" name="message" rows="3" placeholder="Enter your reply" required></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary text-center">Send Reply</button>
+    </form>
+</div>
+
+                                
+
+    <script>
+        function scrollBox(direction) {
+            const messageBox = document.querySelector('.message-box');
+            const scrollAmount = 50;
+            if (direction === 'up') {
+                messageBox.scrollTop -= scrollAmount;
+            } else if (direction === 'down') {
+                messageBox.scrollTop += scrollAmount;
+            }
+        }
+    </script>
+    
+<br>
+<br>
+<footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // JavaScript for handling the form submission via AJAX
+    document.getElementById('chatForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const recipientId = form.getAttribute('data-recipient');
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',  // Replace with your CSRF token
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response, e.g., display the new message in the chat
+            if (data.success) {
+                // Do something on success, e.g., update the chat messages
+                // For example, you can add the new message to the chat box using JavaScript
+                // Example: 
+                const chatMessages = document.querySelector('.chat-messages');
+                const newMessage = document.createElement('div');
+                newMessage.textContent = data.message;
+                // Add CSS classes based on message sender (admin or user)
+                if (data.is_admin) {
+                    newMessage.classList.add('message', 'received');
+                } else {
+                    newMessage.classList.add('message', 'sent');
+                }
+                chatMessages.appendChild(newMessage);
+
+                // Clear the form input after sending the message
+                form.reset();
+            } else {
+                // Handle errors if needed
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle errors if needed
+        });
+    });
+</script>

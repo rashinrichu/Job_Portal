@@ -1,0 +1,23 @@
+<!-- chat.html -->
+
+<h1>Chat with {{ recipient.username }}</h1>
+
+<ul>
+  {% for message in messages %}
+    {% if message.sender == request.user %}
+      <li class="sent">You: {{ message.message }}</li>
+    {% else %}
+      {% if message.admin %}
+        <li class="admin-sent">Admin: {{ message.message }}</li>
+      {% else %}
+        <li class="received">{{ message.sender.username }}: {{ message.message }}</li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="message" placeholder="Type your message" required>
+  <button type="submit">Send</button>
+</form>

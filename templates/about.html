@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+  <style>
+
+    body{
+        background-image: url('https://www.employmenthelp.org/wp-content/uploads/Job-Board-Header-Background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+        
+      
+      
+
+            
+    .navbar {
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+    }
+    .navbar-brand img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .nav-item {
+        font-size: 30px;
+        padding: 5px 10px;
+      }
+      
+      .nav-item:hover {
+        color: mediumseagreen;
+      }
+      
+    .logo-animation {
+        width: 50px;
+        height: 50px;
+        background-image: url(https://cdn.dribbble.com/users/500242/screenshots/3672858/bh-advisor-dribbble.gif);
+        background-size: cover;
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      .nav-logo {
+        font-size: 40px;
+        color: darkslategray;
+        position: relative;
+        animation: shake 0.5s ease-in-out infinite;
+        font-weight: bold;
+      }
+      
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    .text-center{
+        font-size: 60px;
+        font-weight: bold;
+    }   
+    @media (max-width: 768px) {
+        .text-center {
+          font-size: 40px; /* Adjust the font size for mobile devices */
+        }
+      }
+
+      
+      
+
+      /* CSS Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+
+ 
+  
+  h6 {
+    background-image: linear-gradient(rgba(60, 179, 113, 0.8), rgba(60, 179, 113, 0.8)), url("https://th.bing.com/th/id/R.6d6fb6c680245f260e79f1f4ee15133a?rik=iuMU%2bCCVwPfvTQ&pid=ImgRaw&r=0");
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 200px;
+    padding-left: 260px;
+    margin-top: 30px;
+  }  
+  /* footer*/
+  /* Common styles for both desktop and mobile */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-content p {
+    font-size: 25px;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  /* Styles for mobile */
+    /* Add a media query for screens with a maximum width of 767px (mobile devices) */
+    @media (max-width: 767px) {
+      /* Adjust the flex layout to stack the content vertically */
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    
+      /* Reduce the font size for mobile view */
+      .footer-content p {
+        font-size: 10px;
+      }
+    
+      /* Override the flex-wrap property to ensure the right side content is visible */
+      .right-content {
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+    }
+    .content-container {
+        text-align: left;
+        background-color: whitesmoke;
+      }
+      #align {
+      margin-left: 70px;
+      }
+      
+      .registration-box {
+        align-self: flex-end;
+      }
+      .card-title{
+        color:mediumseagreen;
+        font-size: 90px;
+        font-weight: bold;
+      }
+      .card{
+        border: none;
+        width: 250px;
+      }
+.card-text{
+    font-size: 20px;
+}
+      .image-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        opacity: 0.6;
+    }
+    .input-box {
+        background-color: #f1f1f1;
+        padding: 20px;
+        border-radius: 4px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .input-box input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .input-box textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .input-box label {
+        font-weight: bold;
+    }
+
+    @media (max-width: 767px) {
+        .input-box {
+          max-width: 100%; /* Full width on mobile devices */
+        }
+      }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <div class="logo-animation"></div>
+            
+          </a>
+          <span class="nav-logo" href="#">Job Connect</span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/jobs/">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="employeeRegistrationLink">Register</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="loginLink">Login</a>
+          </li>
+ <!-- Employee Registration Modal -->
+ <div id="employeeRegistrationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEmployeeRegistrationModal()">&times;</span>
+      <h2>Employee Registration</h2>
+      <!-- Employee registration form goes here -->
+      <a class="nav-link" href="#" id="employerRegistrationLink">Register as Employer</a>
+
+    </div>
+
+  </div>
+
+  <!-- Employer Registration Modal -->
+  <div id="employerRegistrationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEmployerRegistrationModal()">&times;</span>
+      <h2>Employer Registration</h2>
+      <!-- Employer registration form goes here -->
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <h2>Login</h2>
+      <!-- Login form goes here -->
+    </div>
+  </div>  
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+<h2 class="text-center">About Us</h2>
+
+
+
+<div class="image-container">
+    <img src="https://lh6.googleusercontent.com/FJBsceYFV-sckg1FSb5U0GyRnTk9RUB-WTqdDT5iWu-Li5a5Bff_fZvA2J01DV1gwbo-3YcoAADoaEtZ0gOYOlDnC5FvjsEBzHXvDb2JBP_a6nas8io74DkGe0pbHMtT7MPvRPEl" alt="Image" width="100%" height="auto">
+</div>
+
+<h2 class="text-center">Our Values</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">01</h5>
+                    <p class="card-text">Discretion</p>
+                    <p class="card-text">I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">02</h5>
+                    <p class="card-text">Innovation </p>
+                    <p class="card-text">I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">03</h5>
+                    <p class="card-text">Partnership</p>
+                    <p class="card-text">I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<h2 class="text-center">Join Our Network</h2>
+
+<div class="input-box">
+    <label for="company-name">Company Name</label>
+    <input type="text" id="company-name" name="company-name">
+
+    <label for="industry">Industry</label>
+    <input type="text" id="industry" name="industry">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+
+    <label for="hr-contact-info">HR Contact Info</label>
+    <input type="text" id="hr-contact-info" name="hr-contact-info">
+
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location">
+
+    <label for="more-info">Tell us more</label>
+    <textarea id="more-info" name="more-info" rows="4"></textarea>
+    <div class="text-center" style="font-size: 20px;">    <button type="submit" class="btn btn" style="background-color:black;color:white;">Register</button>
+    </div>
+
+</div>
+<br>
+<br>
+<footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>

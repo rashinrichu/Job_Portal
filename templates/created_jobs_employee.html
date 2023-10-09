@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+  <style>
+
+
+      
+      
+
+            
+    .navbar {
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+    }
+    .navbar-brand img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .nav-item {
+        font-size: 30px;
+        padding: 5px 10px;
+      }
+      
+      .nav-item:hover {
+        color: mediumseagreen;
+      }
+      
+    .logo-animation {
+        width: 50px;
+        height: 50px;
+        background-image: url(https://cdn.dribbble.com/users/500242/screenshots/3672858/bh-advisor-dribbble.gif);
+        background-size: cover;
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      .nav-logo {
+        font-size: 40px;
+        color: darkslategray;
+        position: relative;
+        animation: shake 0.5s ease-in-out infinite;
+        font-weight: bold;
+      }
+      
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+  
+      
+
+      /* CSS Styling */
+
+ 
+  
+  /* footer*/
+  /* Common styles for both desktop and mobile */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-content p {
+    font-size: 25px;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  /* Styles for mobile */
+    /* Add a media query for screens with a maximum width of 767px (mobile devices) */
+    @media (max-width: 767px) {
+      /* Adjust the flex layout to stack the content vertically */
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    
+      /* Reduce the font size for mobile view */
+      .footer-content p {
+        font-size: 10px;
+      }
+    
+      /* Override the flex-wrap property to ensure the right side content is visible */
+      .right-content {
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+    }
+ 
+      
+      .carousel-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .carousel-overlay marquee {
+        color:black;
+        font-size: 44px;
+        font-weight: bold;
+        padding: 10px;
+      }
+      .row {
+        display: flex;
+        justify-content: center; /* Center the boxes horizontally */
+        gap: 30px; /* Add a gap between the boxes */
+        margin-bottom: 20px;
+      }
+      
+      .box {
+        width: 22%;
+        height: 80px;
+        box-sizing: border-box;
+        padding: 20px;
+        border: 1px solid black;
+      }
+      
+      .box:last-child {
+        margin-right: 0; /* Remove the right margin for the last box */
+      }
+      
+      
+      .box:last-child {
+        margin-right: 0; /* Remove the right margin for the last box */
+      }
+      
+      .box-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+        justify-items: center; /* Center the boxes horizontally */
+        gap: 10px; /* Add a gap between the boxes */
+      }
+      .box-content{
+        font-size: 30px;
+        text-align: center;  
+        position: relative;
+        cursor: pointer; 
+        } 
+        .box:hover {
+            background-color: black;
+          }
+          
+          .box:hover .box-content {
+            color: white; /* Set the color to white when hovering over the box */
+          }
+      
+    
+          @media (max-width: 767px) {
+            .box {
+                width: 70%;
+                margin-right: 0; /* Remove the right margin for all boxes on mobile */
+                margin-bottom: 10px; /* Add bottom margin to create a gap between rows */
+                height: auto; /* Remove fixed height to allow for content wrapping */
+            }
+            
+            .box-container {
+                grid-template-columns: 1fr; /* Change to a single column layout on mobile */
+            }
+        }
+    
+    .box:hover {
+      background-color: black;
+    }
+    
+    .box:hover .box-content {
+      color: white;
+    }
+    body{
+        background-image: url('https://www.employmenthelp.org/wp-content/uploads/Job-Board-Header-Background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+      }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo-animation"></div>
+                
+              </a>
+              <span class="nav-logo" href="#">Job Connect</span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employee_profile/">Profile</a>
+              </li>
+              
+               
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_messages/">Chat</a>
+                
+         
+              </li>
+              
+              
+            
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="" id="">Jobs</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Jobs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
+                  <li><a class="dropdown-item" href="/created_jobs_employee/">All Job</a></li>
+                  <!-- Add more dropdown menu items for jobs if needed -->
+                  <li><a class="dropdown-item" href="/all_employers_list/">Employers</a></li>
+                  <li><a class="dropdown-item" href="/applied_jobs_employee/">Applied jobs</a></li>
+                  <li><a class="dropdown-item" href="/employee_chat/">Notifications</a></li>
+    
+                </ul>
+              </li>
+            
+              
+    
+    
+           
+    
+              <li class="nav-item">
+                <a class="nav-link" href="/logout/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+<br>
+<br>
+<br>
+
+<div class="card-row">
+    {% for job_listing in job_listings %}
+    <div class="card">
+      <h3>{{ job_listing.title }}</h3>
+      <h4>Category: {{ job_listing.category }}</h4>
+      <p>Description: {{ job_listing.description }}</p>
+      <p>Requirements: {{ job_listing.requirements }}</p>
+      <p>Location: {{ job_listing.location }}</p>
+      <p>Salary: {{ job_listing.salary }}</p>
+      <p>Keyword: {{ job_listing.get_keyword_display }}</p>
+      <p>Vacancies: {{ job_listing.vacancies }}</p>
+      <p>Date Added: {{ job_listing.date_added }}</p>
+      <p>Expiry Date: {{ job_listing.expiry_date }}</p>
+      <div class="text-center" style="font-size: 20px;">
+        <button type="button" class="btn btn" style="background-color:black;color:white;" data-bs-toggle="modal" data-bs-target="#applyJobModal{{ job_listing.id }}">
+          Apply
+        </button>
+      
+      </div>
+    </div>
+    
+    <!-- Chat Modal -->
+    <div class="modal fade" id="chatModal{{ job_listing.id }}" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel{{ job_listing.id }}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="chatModalLabel{{ job_listing.id }}">Chat with {{ job_listing.employer.user.username }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Add your chat form or chat messages display here -->
+            <form action="{% url 'chat_between_users' sender_id=request.user.id recipient_id=job_listing.employer.user.id %}" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% endfor %}
+</div>
+
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>     
+  <footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+  <!-- Modal -->
+  {% for job_listing in job_listings %}
+  <div class="modal fade" id="applyJobModal{{ job_listing.id }}" tabindex="-1" aria-labelledby="applyJobModalLabel{{ job_listing.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applyJobModalLabel{{ job_listing.id }}">Apply for Job: {{ job_listing.title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Job application form -->
+          <form method="POST" action="{% url 'apply_job' job_listing.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="cover-letter" class="form-label">Cover Letter</label>
+              <textarea class="form-control" id="cover-letter" name="cover_letter" rows="5"></textarea>
+            </div>
+            <!-- Resume field -->
+            <div class="mb-3">
+              <label for="resume" class="form-label">Resume</label>
+              <input type="file" class="form-control" id="resume" name="resume">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+
+
+<!-- Chat Modal -->
+
+
+  <style>
+    
+    .card-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Align cards to the center */
+        gap:15px;
+
+      }
+    
+      .card {
+        width: calc(50% - 20px); /* Reduce the width to occupy 50% of the container */
+        max-width: 300px; /* Set a maximum width for the cards */
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        text-align: center; /* Center-align the card content */
+      }
+    
+      @media (max-width: 767px) {
+        .card {
+          width: calc(100% - 20px); /* Cards occupy 100% width on smaller screens */
+        }
+      }
+
+  </style>
+
+

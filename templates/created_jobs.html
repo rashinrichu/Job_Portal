@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  {% extends 'navbar3.html' %}
+  {% load static %}
+  
+  {% block content %}
+
+  <br>
+
+  <div class="card-row">
+    {% for job_listing in job_listings %}
+    <div class="card">
+      <h3>{{ job_listing.title }}</h3>
+      <h4>Category: {{ job_listing.category }}</h4>
+      <p>Description: {{ job_listing.description }}</p>
+      <p>Requirements: {{ job_listing.requirements }}</p>
+      <p>Location: {{ job_listing.location }}</p>
+      <p>Salary: {{ job_listing.salary }}</p>
+      <p>Keyword: {{ job_listing.get_keyword_display }}</p>
+      <p>Vacancies: {{ job_listing.vacancies }}</p>
+      <p>Date Added: {{ job_listing.date_added }}</p>
+      <p>Expiry Date: {{ job_listing.expiry_date }}</p>
+      <div class="text-center" style="font-size: 20px;">
+        <a href="{% url 'update_job_listing' job_listing_id=job_listing.id %}" class="btn btn-" style="background-color: black;color:white;">Edit</a>
+
+          
+          
+    
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+
+  <!-- Add a modal for editing the job listing -->
+  
+
+  <footer style="background-color:black; padding: 20px;">
+    <div class="footer-content d-flex justify-content-between align-items-center flex-wrap">
+      <div class="left-content text-center">
+        <p class="clinic-name" style="font-size: 25px; color: white; margin-bottom: 0;">
+          Email</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:28px;">rashin@gmail.com</p>
+        <br>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;">Address</p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Kannur City  </p>
+        <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">In Kerala
+          <p class="address" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">India CA 94158
+
+        </div>
+        <div class="center-content text-center">
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">About Us anything</p>
+          <p class="center-paragraph" style="font-size: 25px; color: white; margin-bottom: 0;">FAQ</p>
+
+        </div>
+      <div class="right-content text-center">
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Tel</p>
+        <p class="tel" style="font-size: 30px; color: white; margin-bottom: 0;">123-456-7890</p>
+        <br>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;">Follow Us</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Instagram</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Facebook</p>
+        <p class="tel" style="font-size: 25px; color: white; margin-bottom: 0;font-size:30px;">Twitter</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    
+    .card-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Align cards to the center */
+        gap:15px;
+
+      }
+    
+      .card {
+        width: calc(50% - 20px); /* Reduce the width to occupy 50% of the container */
+        max-width: 300px; /* Set a maximum width for the cards */
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        text-align: center; /* Center-align the card content */
+      }
+    
+      @media (max-width: 767px) {
+        .card {
+          width: calc(100% - 20px); /* Cards occupy 100% width on smaller screens */
+        }
+      }
+
+  </style>
+
+  {% if messages %}
+  <script>
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        var alertMsg = '{{ message|safe }}';
+      {% endif %}
+    {% endfor %}
+
+    if (typeof alertMsg !== 'undefined') {
+      alert(alertMsg);
+    }
+  </script>
+{% endif %}
+
+
+
+  {% endblock %}
